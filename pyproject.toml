@@ -1,0 +1,23 @@
+[project]
+name = "doc-chat"
+version = "0.1.0"
+description = "Local RAG CLI tool — ingest documents, query with LLM"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "comtypes>=1.4.16",
+    "docling>=2.91.0",
+    "python-dotenv>=1.0",
+    # Vector DB + Embeddings
+    "chromadb>=1.0.0",
+    "sentence-transformers",
+    # RAG Agent
+    "langchain>=0.3",
+    "langchain-core>=0.3",
+    "langchain-litellm>=0.6",
+    "litellm>=1.0",
+    # Terminal UI
+    "rich>=13.0",
+    "prompt-toolkit>=3.0",
+    "pyfiglet>=1.0",
+]

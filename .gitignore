@@ -1,0 +1,26 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# ChromaDB persistent storage
+.chroma/
+
+# Generated chunks
+chunks/
+
+# Raw documents (user-provided)
+raw/
+
+# Environment
+.env
+
+# OS
+Thumbs.db
+.DS_Store
