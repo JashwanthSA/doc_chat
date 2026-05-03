@@ -21,6 +21,8 @@ doc_chat is a local-first RAG (Retrieval-Augmented Generation) CLI tool that let
 
 Everything runs locally (embeddings, vector DB) except the LLM calls which go through LiteLLM to your chosen provider.
 
+**Note:** PPTX files are processed via a Windows-only pipeline that renders slides using PowerPoint (comtypes) and leverages a vision LLM for slide understanding, unlike other document types which use standard Docling-based parsing.
+
 ---
 
 ## Key Technologies
@@ -136,9 +138,7 @@ Both `/ingest` and `/ingest-all` support:
 #### Examples
 
 ```
-doc_chat ❯ /ingest raw/company-policy.pdf
-doc_chat ❯ /ingest raw/presentation.pptx --describe-images no
-doc_chat ❯ /ingest-all raw/ --output-path chunks --describe-images yes
+doc_chat ❯ /ingest examples/sample.pdf
 ```
 
 ### Querying
@@ -146,13 +146,12 @@ doc_chat ❯ /ingest-all raw/ --output-path chunks --describe-images yes
 Simply type your question:
 
 ```
-doc_chat ❯ What is the employee recognition policy?
+doc_chat ❯ Explain about the encoder and decoder stacks.
 
-The employee recognition policy states that...
+The encoder stack is composed of...
 
 Sources:
-  • Employee Recognition and Gift Policy (p. 3)
-  • Employee Recognition and Gift Policy (p. 5)
+  • sample (p. 3)
 ```
 
 Responses stream token-by-token with source citations shown after completion.
@@ -162,7 +161,7 @@ Responses stream token-by-token with source citations shown after completion.
 You can also ingest pre-generated JSONL chunk files directly:
 
 ```bash
-python ingest.py chunks/my-document.jsonl
+python ingest.py chunks/sample.jsonl
 python ingest.py chunks/                    # all JSONL files in folder
 python ingest.py --info                     # show collection stats
 ```
